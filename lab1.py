@@ -63,7 +63,8 @@ class Item():
 # Step 6: Implement a getter for the quantity attribute.
 # This method should simply return the value of the private _quantity attribute.
 
-    
+    def get_quantity(self):
+        return self._quantity
 
 
 
@@ -71,7 +72,10 @@ class Item():
 # This method should check if the provided value is a non-negative integer before setting the _quantity attribute.
 # If the value is negative, it should raise a ValueError.
 
-
+    def set_quantity(self, new_quantity):
+        if new_quantity < 0:
+            raise ValueError("Price cannot be negative.")
+        self._quantity = new_quantity
 
 
 
