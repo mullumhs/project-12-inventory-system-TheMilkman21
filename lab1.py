@@ -27,8 +27,6 @@ class Item():
 
    
 
-
-
 # Step 3: Implement a setter for the name attribute.
 # This method should check if the provided value is a string before setting the _name attribute.
 # If the value is not a string, it should raise a ValueError.
@@ -83,6 +81,12 @@ class Item():
 # For example, create a new Item and attempt to set its attributes with both valid and invalid values.
 # Print the outputs using the getters to show how the data is managed internally.
 
+bread = Item("bread", -3, 300)
+cheese = Item("", 4, 3)
+ham =Item("ham", 5, -23)
+juice = Item("juice", 500, 0.1)
 
+
+print(bread.get_name(), bread.get_price(), bread.get_quantity())
 
 
