@@ -13,9 +13,9 @@
 # We will define the setters in later steps to add validation to the setting of these attributes.
 class Item():
     def __init__(self, name, price, quantity):
-        self._name = name
-        self._price = price
-        self._quantity = quantity
+        self.set_name(name)
+        self.set_price(price)
+        self.set_quantity(quantity)
 
 
 
@@ -31,10 +31,12 @@ class Item():
 # This method should check if the provided value is a string before setting the _name attribute.
 # If the value is not a string, it should raise a ValueError.
 
-    def set_name(self, new_name):
-        if new_name is not "":
+    def set_name(self, name):
+        if isinstance(name, str):
+            self._name = name
+        else:
             raise ValueError("put a name")
-        self._name = new_name
+        
 
 
 
@@ -51,11 +53,12 @@ class Item():
 # This method should check if the provided value is a non-negative number before setting the _price attribute.
 # If the value is negative, it should raise a ValueError.
 
-    def set_price(self, new_price):
-        if new_price < 0:
+    def set_price(self, price):
+        if isinstance(price, (int, float)) and price >= 0:
+            self._price = price
+        else:
             raise ValueError("Price cannot be negative.")
-        self._price = new_price
-
+        
 
 
 # Step 6: Implement a getter for the quantity attribute.
@@ -70,20 +73,24 @@ class Item():
 # This method should check if the provided value is a non-negative integer before setting the _quantity attribute.
 # If the value is negative, it should raise a ValueError.
 
-    def set_quantity(self, new_quantity):
-        if new_quantity < 0:
-            raise ValueError("Price cannot be negative.")
-        self._quantity = new_quantity
-
+    def set_quantity(self, quantity):
+        if isinstance(quantity, (int, float)) and quantity >= 0:
+             self._quantity = quantity
+        else:
+            raise ValueError("Price cannot be negative.")       
 
 
 # Step 8: Create instances of the Item class and demonstrate the use of getters and setters.
 # For example, create a new Item and attempt to set its attributes with both valid and invalid values.
 # Print the outputs using the getters to show how the data is managed internally.
 
-bread = Item("bread", -3, 300)
-cheese = Item("", 4, 3)
-ham =Item("ham", 5, -23)
+try:
+    bread = Item("bread", -3, 300)
+except ValueError as error_msg:
+    print(error_msg)
+    
+cheese = Item("", 4, -3)
+ham = Item("ham", 5, 23)
 juice = Item("juice", 500, 0.1)
 
 
