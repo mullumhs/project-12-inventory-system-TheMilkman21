@@ -84,16 +84,6 @@ class Item():
 # For example, create a new Item and attempt to set its attributes with both valid and invalid values.
 # Print the outputs using the getters to show how the data is managed internally.
 
-try:
-    bread = Item("bread", -3, 300)
-except ValueError as error_msg:
-    print(error_msg)
-    
-cheese = Item("", 4, -3)
-ham = Item("ham", 5, 23)
-juice = Item("juice", 500, 0.1)
 
-
-print(bread.get_name(), bread.get_price(), bread.get_quantity())
 
 
