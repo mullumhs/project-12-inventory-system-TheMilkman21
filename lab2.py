@@ -21,30 +21,52 @@ class ItemManager:
     def __init__(self):
         self.items = []
 
-    def add_item(self, item):
+    def add_item(self, name, price, quantity):
         for existing_item in self.items:
-            if existing_item.get_name() == item.get_name():
+            if existing_item.get_name() == name:
                 return False
+        item = Item(name, price, quantity)
         self.items.append(item)
         return True
         
     def remove_item(self, name):
-        for i, existing_item in self.items:
+        for  existing_item in self.items:
             if existing_item.get_name() == name:
-                del self.items[i]
+                del name
+                print(f"{name} has been removed")
                 return True
         return False
     
-    def update_item(self, name, new_price):
-        for 
-        
-    def display_item():
-        pass
-
-
+    def update_item(self, name, new_price, new_quantity):
+        for existing_item in self.items:
+            if existing_item.get_name() == name:
+                existing_item.set_price(new_price)
+                existing_item.set_quantity(new_quantity) 
+                print(f"{name} price updated to {new_price}")
+                print(f"{name} quantity to {new_quantity}")
+                return True
+        return False
+            
+    def display_item(self):
+        print("current items")
+        for item in self.items:
+            print(f"Item name: {item.get_name()}, price: ${item.get_price()}, quantity: {item.get_quantity()}")
+            
+    def find_item(self, name):
+        for existing_item in self.items:
+            if existing_item.get_name() == name:
+                return existing_item
+        return None
 
 # Step 2: Create instances of the Item class and InventoryManager, then demonstrate their usage.
 # E.g. add items to the inventory, remove items, update items, and display the inventory.
 
+weapons = ItemManager()
 
+weapons.add_item("sword", 5, 1)
+weapons.add_item("bat", 2, 1)
+weapons.add_item("gun", 20, 1)
+weapons.update_item("sword", 15, 3)
+weapons.remove_item("bat")
+weapons.display_item()
 
