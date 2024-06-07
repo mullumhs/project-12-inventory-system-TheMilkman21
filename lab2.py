@@ -30,9 +30,9 @@ class ItemManager:
         return True
         
     def remove_item(self, name):
-        for  existing_item in self.items:
+        for i, existing_item in enumerate(self.items):
             if existing_item.get_name() == name:
-                del name
+                del self.items[i]
                 print(f"{name} has been removed")
                 return True
         return False
@@ -58,6 +58,7 @@ class ItemManager:
                 return existing_item
         return None
 
+    
 # Step 2: Create instances of the Item class and InventoryManager, then demonstrate their usage.
 # E.g. add items to the inventory, remove items, update items, and display the inventory.
 
@@ -66,6 +67,7 @@ weapons = ItemManager()
 weapons.add_item("sword", 5, 1)
 weapons.add_item("bat", 2, 1)
 weapons.add_item("gun", 20, 1)
+weapons.display_item()
 weapons.update_item("sword", 15, 3)
 weapons.remove_item("bat")
 weapons.display_item()
