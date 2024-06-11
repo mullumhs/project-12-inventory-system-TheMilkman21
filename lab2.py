@@ -48,7 +48,6 @@ class ItemManager:
         return False
             
     def display_item(self):
-        print("current items")
         for item in self.items:
             print(f"Item name: {item.get_name()}, price: ${item.get_price()}, quantity: {item.get_quantity()}")
             
