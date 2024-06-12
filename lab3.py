@@ -13,21 +13,22 @@
 from lab1 import Item; from lab2 import ItemManager
 
 # Step 2: Define an add_item function that prompts the user for item details and adds the item to the inventory
-def add_item():
+def add_item(manager):
     name = input("enter name of item: ")
     price = float(input("enter price: "))
     quantity = int(input("enter quantity: "))
-    item = Item(name, price, quantity)
-    if ItemManager.add_item(item):
-        print("added the item")
+    if manager.add_item(name, price, quantity):
+        print("\nadded the item")
+        pause()
     else:
-        print("cant add that")
+        print("\ncant add that")
+        pause()
 
 # Step 3: Define an update_item function that prompts the user for item details and updates the item in the inventory
-def update_item():
-    name = print("enter item you want to update: ")
-    price = print("Enter new price (leave blank to keep current): ")
-    quantity = print("Enter new quantity (leave blank to keep current):")
+def update_item(manager):
+    name = input("enter item you want to update: ")
+    price = float(input("Enter new price (leave blank to keep current): "))
+    quantity = int(input("Enter new quantity (leave blank to keep current):"))
     if price:
         price = float(price)
     else:
@@ -38,25 +39,40 @@ def update_item():
     else:
         quantity = None
         
-    if ItemManager.update_item(name, price, quantity):
-        print("Ticket updated successfully.")
+    if manager.update_item(name, price, quantity):
+        print("\nitem updated successfully.")
+        pause()
     else:
-        print("Ticket not found or no updates made.")
+        print("\nitem not found or no updates made.")
+        pause()
 
 # Step 4: Define a remove_item function that prompts the user for an item name and removes the item from the inventory
-def remove_item():
+def remove_item(manager):
     name = input("enter item you want to remove: ")
-    if ItemManager.remove_item(name):
-        print("removed")
+    if manager.remove_item(name):
+        print("\nitem was removed")
+        pause()
     else:
-        print("item not found")
+        print("\nitem not found")
+        pause()
     
 
 # Step 5: Define a display_inventory function that displays all items in the inventory
-def display_items():
-    print("Current items:")
-    ItemManager.display_item()
+def display_items(manager):
+    print("\nCurrent items:")
+    manager.display_item()
+    pause()
     
+def pause():
+    input("\n1press enter to continue: ")
+
+
+def main():
+    # Step 6: Initialise an instance of InventoryManager
+    
+
+    # Step 7: Use the actions dictionary to map user input to the corresponding functions
+    actions = {}
 def main():
     manager = ItemManager()
     actions = {
@@ -65,12 +81,6 @@ def main():
         '3': remove_item,
         '4': display_items
     }
-def main():
-    # Step 6: Initialise an instance of InventoryManager
-    
-
-    # Step 7: Use the actions dictionary to map user input to the corresponding functions
-    actions = {}
     
     while True:
         print("\nInventory Management System")
@@ -82,12 +92,18 @@ def main():
 
         choice = input("Enter choice: ")
         
-        if
+        
 
         # Step 8: Implement the logic to call the appropriate function based on user input
         # Exit the loop if the user chooses 5, otherwise display an error message for invalid choices
-
-
+        
+        if choice == "5":
+            print("exiting")
+            break
+        elif choice in actions:
+            actions[choice](manager)
+        else:
+            print("invalid bro")
         
 
 if __name__ == "__main__":
