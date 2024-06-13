@@ -61,13 +61,5 @@ class ItemManager:
 # Step 2: Create instances of the Item class and InventoryManager, then demonstrate their usage.
 # E.g. add items to the inventory, remove items, update items, and display the inventory.
 
-weapons = ItemManager()
 
-weapons.add_item("sword", 5, 1)
-weapons.add_item("bat", 2, 1)
-weapons.add_item("gun", 20, 1)
-weapons.display_item()
-weapons.update_item("sword", 15, 3)
-weapons.remove_item("bat")
-weapons.display_item()
 

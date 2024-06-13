@@ -64,7 +64,7 @@ def display_items(manager):
     pause()
     
 def pause():
-    input("\n1press enter to continue: ")
+    input("\npress enter to continue: ")
 
 
 def main():
